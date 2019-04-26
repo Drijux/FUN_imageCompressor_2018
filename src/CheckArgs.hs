@@ -1,7 +1,7 @@
 -- @Author: rjules
 -- @Date:   2019-04-25 23:19:20
 -- @Last Modified by:   rjules
--- @Last Modified time: 2019-04-26 03:43:51
+-- @Last Modified time: 2019-04-26 09:02:45
 
 module CheckArgs (
     isInteger,
@@ -11,6 +11,7 @@ module CheckArgs (
 ) where
 
 import System.Exit
+import Control.Exception
 
 import PrintUsage
 
@@ -28,14 +29,14 @@ isFloat str =
 
 checkE :: String -> Float
 checkE str
-    | isFloat str && f > 0 = f
-    | otherwise = error "Invalid e"
+    | isFloat str == False || f <= 0 = error "Invalid e"
+    | otherwise = f
     where
         f = read str :: Float
 
 checkN :: String -> Int
 checkN str
-    | isInteger str && f > 0 = f
-    | otherwise = error "Invalid n"
+    | isInteger str == False || f <= 0 = error "Invalid n"
+    | otherwise = f
     where
         f = read str :: Int
