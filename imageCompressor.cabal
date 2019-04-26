@@ -29,6 +29,8 @@ library
   exposed-modules:
     CheckArgs
     PrintUsage
+    Split
+    CheckFile
   other-modules:
       Paths_imageCompressor
   hs-source-dirs:

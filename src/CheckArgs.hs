@@ -1,7 +1,7 @@
 -- @Author: rjules
 -- @Date:   2019-04-25 23:19:20
 -- @Last Modified by:   rjules
--- @Last Modified time: 2019-04-25 23:44:18
+-- @Last Modified time: 2019-04-26 03:43:51
 
 module CheckArgs (
     isInteger,
@@ -26,16 +26,16 @@ isFloat str =
         [(_, "")] -> True
         _         -> False
 
-checkE :: String -> IO ()
+checkE :: String -> Float
 checkE str
-    | isFloat str && f > 0 = putStr("")
-    | otherwise = printUsage
+    | isFloat str && f > 0 = f
+    | otherwise = error "Invalid e"
     where
         f = read str :: Float
 
-checkN :: String -> IO ()
+checkN :: String -> Int
 checkN str
-    | isInteger str && f > 0 = return ()
-    | otherwise = printUsage
+    | isInteger str && f > 0 = f
+    | otherwise = error "Invalid n"
     where
-        f = read str :: Integer
+        f = read str :: Int
