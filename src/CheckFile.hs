@@ -1,13 +1,13 @@
 -- @Author: rjules
 -- @Date:   2019-04-26 05:17:15
 -- @Last Modified by:   rjules
--- @Last Modified time: 2019-04-26 05:52:01
+-- @Last Modified time: 2019-04-28 06:07:26
 
 module CheckFile (
     Point(..),
     Color(..),
     Pixel(..),
-    Centroid,
+    Centroid(..),
     checkFile
 ) where
 
@@ -25,12 +25,16 @@ data Color = Color {
     colorB :: Int
 } deriving (Show)
 
+data Centroid = Centroid {
+    centrR :: Float,
+    centrG :: Float,
+    centrB :: Float
+} deriving (Eq, Show)
+
 data Pixel = Pixel {
     point :: Point,
     color :: Color
 } deriving (Show)
-
-type Centroid = Color
 
 checkColor :: String -> Color
 checkColor color
