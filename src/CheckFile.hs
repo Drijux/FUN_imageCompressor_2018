@@ -1,29 +1,36 @@
 -- @Author: rjules
 -- @Date:   2019-04-26 05:17:15
 -- @Last Modified by:   rjules
--- @Last Modified time: 2019-04-28 06:07:26
+-- @Last Modified time: 2019-04-28 18:19:20
 
 module CheckFile (
     Point(..),
     Color(..),
     Pixel(..),
     Centroid(..),
+    Cluster(..),
+    Obj(..),
     checkFile
 ) where
 
 import CheckArgs
 import Split
 
+data Cluster = Cluster {
+    centroid :: Centroid,
+    pixels :: [Pixel]
+} deriving (Eq, Show)
+
 data Point = Point {
     x :: Int,
     y :: Int
-} deriving (Show)
+} deriving (Eq, Show)
 
 data Color = Color {
     colorR :: Int,
     colorG :: Int,
     colorB :: Int
-} deriving (Show)
+} deriving (Eq, Show)
 
 data Centroid = Centroid {
     centrR :: Float,
@@ -34,6 +41,12 @@ data Centroid = Centroid {
 data Pixel = Pixel {
     point :: Point,
     color :: Color
+} deriving (Eq, Show)
+
+data Obj = Obj {
+    n :: Int,
+    e :: Float,
+    pixel :: [Pixel]
 } deriving (Show)
 
 checkColor :: String -> Color
