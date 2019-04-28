@@ -1,7 +1,7 @@
 -- @Author: rjules
 -- @Date:   2019-04-26 05:17:15
 -- @Last Modified by:   rjules
--- @Last Modified time: 2019-04-28 18:19:20
+-- @Last Modified time: 2019-04-28 18:30:55
 
 module CheckFile (
     Point(..),
@@ -65,8 +65,8 @@ checkColor color
 checkPoint :: String -> Point
 checkPoint point
     | head point /= '(' || last point /= ')' = error "Invalid point writting"
-    | isInteger (tail (strP !! 0)) == False || x < 0 || x > 255 = error "Invalid x point"
-    | isInteger (init (strP !! 1)) == False || y < 0 || y > 255 = error "Invalid y point"
+    | isInteger (tail (strP !! 0)) == False || x < 0 = error "Invalid x point"
+    | isInteger (init (strP !! 1)) == False || y < 0 = error "Invalid y point"
     | otherwise = Point x y
     where
         strP = split point ','
