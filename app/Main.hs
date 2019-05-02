@@ -1,7 +1,7 @@
 -- @Author: rjules
 -- @Date:   2019-04-24 15:13:52
 -- @Last Modified by:   rjules
--- @Last Modified time: 2019-04-28 18:25:29
+-- @Last Modified time: 2019-05-02 16:04:02
 
 module Main where
 import System.Environment
@@ -55,8 +55,8 @@ sumCluster cl
 
 runCentroid :: Float -> [Pixel] -> [Centroid] -> [Cluster] -> [Cluster]
 runCentroid e pixels centroids cluster
-    | cluster == cluster' = cluster
-    | otherwise = runCentroid e pixels newCentroids cluster'
+    | cluster == cluster'' = cluster''
+    | otherwise = runCentroid e pixels newCentroids cluster''
     where
     cluster' = map sumCluster cluster
     newCentroids = map centroid cluster'

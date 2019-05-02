@@ -1,7 +1,7 @@
 -- @Author: rjules
 -- @Date:   2019-04-28 07:34:08
 -- @Last Modified by:   rjules
--- @Last Modified time: 2019-04-28 21:43:04
+-- @Last Modified time: 2019-05-02 15:41:41
 
 module GetClusters (
     getCluster,
@@ -72,7 +72,7 @@ findClosest pixels (c:lcs) = findClosest' pixels lcs c
 findClosest' :: Pixel -> [Centroid] -> Centroid -> Centroid
 findClosest' _ [] mc = mc
 findClosest' pixel (c:lcs) mc
-    | first < second = findClosest' pixel lcs mc
+    | first <= second = findClosest' pixel lcs mc
     | otherwise = findClosest' pixel lcs c
     where
         first = calcDistance mc (pixelToCentroid pixel)
